@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Project</title>
+  <link rel="stylesheet" href="Styles/style.css">
+</head>
+<body>
+  <!-- Header with navigation -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+      </ul>
+      <!-- Hamburger menu for mobile -->
+      <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <section class="hero">
+      <h1>Welcome to My Final Project</h1>
+      <p>Hi! I'm Bessie Wangui, a passionate web developer.</p>
+      <img src="Images/IMG-20250529-WA0024.jpg" alt="Bessie Wangui">
+    </section>
+    <section>
+      <h2>About Me</h2>
+      <p>
+        I'm Bessie Wangui, a web developer with a passion for building beautiful and functional websites.
+      </p>
+      <!-- More content here -->
+    </section>
+    <section>
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
+        <label>Message: <textarea name="message" required></textarea></label><br>
+        <button type="submit">Send</button>
+        <p id="formMsg"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Bessie</p>
+  </footer>
+
+  <script src ="Interactivity/script.js"></script>
+  <script>
+  // Simple form validation
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = this.name.value.trim();
+    const email = this.email.value.trim();
+    const message = this.message.value.trim();
+    const msg = document.getElementById('formMsg');
+    if (!name || !email || !message) {
+      msg.textContent = "Please fill in all fields.";
+      msg.style.color = "red";
+    } else {
+      msg.textContent = "Thank you for your message!";
+      msg.style.color = "green";
+      this.reset();
+    }
+  });
+  </script>
+</body>
+</html>
