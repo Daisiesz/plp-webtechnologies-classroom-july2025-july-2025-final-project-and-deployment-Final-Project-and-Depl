@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow & Grace Beauty Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #f8c8dc;
+            --secondary: #d4a5c3;
+            --accent: #a2678a;
+            --dark: #4a3b5a;
+            --light: #f9f4f8;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--dark);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1187&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        /* Assessment Section */
+        .assessment {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--dark);
+        }
+
+        .assessment-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .assessment-content {
+            flex: 1;
+        }
+
+        .assessment-form {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .skin-type-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .skin-type-option {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 10px;
+            background: var(--light);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .skin-type-option.selected {
+            background: var(--primary);
+            border-color: var(--accent);
+        }
+
+        /* Products Section */
+        .products {
+            background-color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            color: white;
+        }
+
+        .booking h2, .booking h3 {
+            color: white;
+        }
+
+        .booking-container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .booking-content {
+            flex: 1;
+        }
+
+        .booking-form {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        /* Consent Form */
+        .consent {
+            background-color: white;
+        }
+
+        .consent-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .consent-text {
+            height: 300px;
+            overflow-y: auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .consent-agreement {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .consent-agreement input {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .assessment-container, .booking-container {
+                flex-direction: column;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Page-specific styles */
+        .page-hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1187&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+
+        .page-content {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            text-align: center;
+            background: var(--light);
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            color: var(--accent);
+            margin-top: 5px;
+        }
+
+        .map {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Hidden pages */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo" onclick="showPage('home')">Glow & <span>Grace</span></a>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('about')">About</a></li>
+                    <li><a href="#" onclick="showPage('services')">Services</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                    <li><a href="#" class="btn" onclick="showPage('booking')">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Discover Your Natural Beauty</h1>
+                <p>At Glow & Grace, we believe everyone deserves to feel confident and beautiful. Our expert team provides personalized skincare treatments to enhance your natural glow.</p>
+                <a href="#" class="btn" onclick="showPage('booking')">Book Your Session</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                    <p>We offer a wide range of beauty treatments tailored to your unique needs</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Skin Assessment</h3>
+                            <p>Comprehensive analysis of your skin type and concerns to create a personalized treatment plan.</p>
+                            <a href="#" class="btn" onclick="showPage('assessment')">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Facial Treatments</h3>
+                            <p>Rejuvenating facials designed to cleanse, exfoliate, and nourish your skin for a radiant glow.</p>
+                            <a href="#" class="btn" onclick="showPage('booking')">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Beauty Products</h3>
+                            <p>High-quality skincare products carefully selected to complement your treatment results.</p>
+                            <a href="#" class="btn" onclick="showPage('products')">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skin Assessment Section -->
+        <section class="assessment">
+            <div class="container assessment-container">
+                <div class="assessment-content">
+                    <h2>Personalized Skin Assessment</h2>
+                    <p>Our advanced skin analysis helps us understand your unique skin type and concerns. Based on the results, we'll recommend the perfect treatments and complementary products for your skin's needs.</p>
+                    <p>Take our quick assessment to discover your ideal beauty regimen.</p>
+                </div>
+                <div class="assessment-form">
+                    <h3>Skin Assessment Quiz</h3>
+                    <form id="skinAssessmentForm">
+                        <div class="form-group">
+                            <label for="skinType">What is your primary skin concern?</label>
+                            <select id="skinType" required>
+                                <option value="">Select your concern</option>
+                                <option value="dryness">Dryness</option>
+                                <option value="oiliness">Oiliness</option>
+                                <option value="aging">Aging</option>
+                                <option value="acne">Acne</option>
+                                <option value="sensitivity">Sensitivity</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>How does your skin typically feel?</label>
+                            <div class="skin-type-options">
+                                <div class="skin-type-option" data-value="tight">Tight</div>
+                                <div class="skin-type-option" data-value="normal">Normal</div>
+                                <div class="skin-type-option" data-value="oily">Oily</div>
+                                <div class="skin-type-option" data-value="combination">Combination</div>
+                            </div>
+                            <input type="hidden" id="skinFeeling" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="skinGoals">What are your main skincare goals?</label>
+                            <textarea id="skinGoals" rows="3" placeholder="e.g., Reduce wrinkles, even skin tone, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Get Personalized Recommendations</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Complimentary Products</h2>
+                    <p>After your treatment, choose one of our premium products to take home</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-lipstick"></i>
+                        </div>
+                        <h3>Lip Care</h3>
+                        <p>Nourishing lip glosses, balms, and scrubs to keep your lips soft and hydrated.</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Body Care</h3>
+                        <p>Luxurious body butters, washes, and scrubs for silky smooth skin.</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Hair & Nail</h3>
+                        <p>Accessories and treatments to complement your beauty routine.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>About Glow & Grace</h1>
+                <p>Your journey to radiant skin starts here</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2023, Glow & Grace Beauty Studio has been dedicated to helping clients discover their natural beauty through personalized skincare treatments. Our founder, Isabella Rose, started with a simple vision: to create a space where everyone feels welcomed, valued, and beautiful.</p>
+                        <p>We believe that skincare is not just about appearance but about self-care and confidence. Our team of certified estheticians stays updated with the latest techniques and products to ensure you receive the best possible care.</p>
+                        <p>At Glow & Grace, we're committed to using high-quality, cruelty-free products that are good for your skin and the environment.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80" alt="Our Studio">
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <h2>Meet Our Team</h2>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80" alt="Isabella Rose">
+                        <h3>Isabella Rose</h3>
+                        <p>Founder & Lead Esthetician</p>
+                        <p>With over 10 years of experience, Isabella specializes in custom facial treatments and skin analysis.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80" alt="Sophia Chen">
+                        <h3>Sophia Chen</h3>
+                        <p>Senior Beauty Therapist</p>
+                        <p>Sophia is an expert in advanced facial techniques and holistic skincare approaches.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1594824434341-3abd82e7e1ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80" alt="Maya Patel">
+                        <h3>Maya Patel</h3>
+                        <p>Skincare Specialist</p>
+                        <p>Maya focuses on acne treatments and sensitive skin care with gentle, effective solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Services Page -->
+    <section id="services" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Our Services</h1>
+                <p>Comprehensive beauty treatments tailored to your needs</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Beauty Treatments</h2>
+                    <p>We offer a wide range of services to help you look and feel your best</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Skin Assessment & Consultation</h3>
+                            <p>Detailed analysis of your skin type, concerns, and goals to create a personalized treatment plan.</p>
+                            <p><strong>Duration:</strong> 30 minutes</p>
+                            <p><strong>Price:</strong> Ksh.2500 (credited toward your first treatment)</p>
+                            <a href="#" class="btn" onclick="showPage('booking')">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Signature Glow Facial</h3>
+                            <p>Our most popular treatment featuring deep cleansing, exfoliation, extraction, and hydration.</p>
+                            <p><strong>Duration:</strong> 60 minutes</p>
+                            <p><strong>Price:</strong> Ksh.12000</p>
+                            <a href="#" class="btn" onclick="showPage('booking')">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Anti-Aging Treatment</h3>
+                            <p>Target fine lines and wrinkles with our advanced anti-aging facial using peptide-rich products.</p>
+                            <p><strong>Duration:</strong> 75 minutes</p>
+                            <p><strong>Price:</strong> Ksh.15000</p>
+                            <a href="#" class="btn" onclick="showPage('booking')">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Acne Solution Facial</h3>
+                            <p>Specialized treatment for acne-prone skin with deep cleansing and healing ingredients.</p>
+                            <p><strong>Duration:</strong> 60 minutes</p>
+                            <p><strong>Price:</strong> Ksh.13000</p>
+                            <a href="#" class="btn" onclick="showPage('booking')">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Hydrating Treatment</h3>
+                            <p>Intense moisture infusion for dry or dehydrated skin with hyaluronic acid and nourishing oils.</p>
+                            <p><strong>Duration:</strong> 60 minutes</p>
+                            <p><strong>Price:</strong> Ksh.11000</p>
+                            <a href="#" class="btn" onclick="showPage('booking')">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Brightening Facial</h3>
+                            <p>Combat hyperpigmentation and achieve a more even skin tone with vitamin C and brightening agents.</p>
+                            <p><strong>Duration:</strong> 75 minutes</p>
+                            <p><strong>Price:</strong> Ksh.14000</p>
+                            <a href="#" class="btn" onclick="showPage('booking')">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 80px;">
+                    <h2>Add-On Services</h2>
+                    <p>Enhance your treatment with these complementary services</p>
+                </div>
+
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Eye Treatment</h3>
+                        <p>Specialized care for the delicate eye area to reduce puffiness and dark circles.</p>
+                        <p><strong>+Ksh.2500</strong></p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-necklace"></i>
+                        </div>
+                        <h3>Neck & Décolletage</h3>
+                        <p>Extend your facial treatment to include the neck and chest area.</p>
+                        <p><strong>+Ksh.3000</strong></p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <i class="fas fa-hand-sparkles"></i>
+                        </div>
+                        <h3>Hand Treatment</h3>
+                        <p>Exfoliation and hydration for soft, youthful-looking hands.</p>
+                        <p><strong>+Ksh.2000</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Get in touch to schedule your consultation</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h2>Visit Our Studio</h2>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Address</h3>
+                                <p>472 Evergreen Terrace <br> Kilimanjaro</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+254 712 345 678</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@glowandgrace.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3>Hours</h3>
+                                <p>Monday - Friday: 9am - 7pm<br>Saturday: 10am - 5pm<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h2>Send Us a Message</h2>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.453229236185!2d-118.2553826847851!3d34.14688808057615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c0b6c1d7c7a1%3A0x8a3b4b6b3b4b3b4b!2sGlendale%2C%20CA%2C%20USA!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Booking Page -->
+    <section id="booking" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Book Your Appointment</h1>
+                <p>Schedule your personalized beauty treatment today</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="booking-container">
+                    <div class="booking-content">
+                        <h2>Ready for Your Transformation?</h2>
+                        <p>Booking your appointment at Glow & Grace is simple. Choose your preferred service, select a date and time that works for you, and we'll take care of the rest.</p>
+                        <p>After booking, you'll receive a confirmation email with all the details of your appointment. We recommend arriving 10 minutes early to complete any necessary paperwork.</p>
+                        <p>If you need to reschedule or cancel your appointment, please do so at least 24 hours in advance.</p>
+                        
+                        <h3>What to Expect</h3>
+                        <ul>
+                            <li>Warm welcome from our friendly staff</li>
+                            <li>Comprehensive skin consultation</li>
+                            <li>Personalized treatment plan</li>
+                            <li>Relaxing environment with calming music</li>
+                            <li>Aftercare recommendations</li>
+                            <li>Complimentary product sample</li>
+                        </ul>
+                    </div>
+                    <div class="booking-form">
+                        <h3>Book Now</h3>
+                        <form id="bookingForm">
+                            <div class="form-group">
+                                <label for="bookingName">Full Name</label>
+                                <input type="text" id="bookingName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingEmail">Email</label>
+                                <input type="email" id="bookingEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingPhone">Phone</label>
+                                <input type="tel" id="bookingPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingService">Service</label>
+                                <select id="bookingService" required>
+                                    <option value="">Select a service</option>
+                                    <option value="skin-assessment">Skin Assessment & Consultation</option>
+                                    <option value="signature-facial">Signature Glow Facial</option>
+                                    <option value="anti-aging">Anti-Aging Treatment</option>
+                                    <option value="acne-solution">Acne Solution Facial</option>
+                                    <option value="hydrating">Hydrating Treatment</option>
+                                    <option value="brightening">Brightening Facial</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingDate">Preferred Date</label>
+                                <input type="date" id="bookingDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTime">Preferred Time</label>
+                                <select id="bookingTime" required>
+                                    <option value="">Select a time</option>
+                                    <option value="9:00">9:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingAddons">Add-On Services (Optional)</label>
+                                <select id="bookingAddons" multiple>
+                                    <option value="eye-treatment">Eye Treatment (+Ksh.2500)</option>
+                                    <option value="neck-treatment">Neck & Décolletage (+Ksh.3000)</option>
+                                    <option value="hand-treatment">Hand Treatment (+Ksh.2000)</option>
+                                </select>
+                                <small>Hold Ctrl/Cmd to select multiple options</small>
+                            </div>
+                            <button type="submit" class="btn">Book Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Consent Form Page -->
+    <section id="consent" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Treatment Consent Form</h1>
+                <p>Please review and agree to our terms before your appointment</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="consent-content">
+                    <h2>Client Consent Agreement</h2>
+                    <p>Please read this consent form carefully before agreeing to any treatments at Glow & Grace Beauty Studio.</p>
+                    
+                    <div class="consent-text">
+                        <h3>Treatment Information</h3>
+                        <p>I understand that the treatment I will receive is for cosmetic purposes and is not a substitute for medical care. I have provided accurate information about my health history and current conditions to the best of my knowledge.</p>
+                        
+                        <h3>Risks and Benefits</h3>
+                        <p>I understand that while every precaution is taken to ensure my safety and comfort, there may be minor risks associated with skin treatments including but not limited to: temporary redness, swelling, sensitivity, or rare allergic reactions to products used.</p>
+                        <p>Benefits may include improved skin texture, tone, hydration, and overall appearance.</p>
+                        
+                        <h3>Aftercare</h3>
+                        <p>I agree to follow all aftercare instructions provided by my esthetician to maximize results and minimize potential side effects. This may include avoiding sun exposure, certain products, or activities for a specified period.</p>
+                        
+                        <h3>Cancellation Policy</h3>
+                        <p>I understand that I must provide at least 24 hours notice if I need to cancel or reschedule my appointment. Late cancellations may result in a fee of 50% of the service cost.</p>
+                        
+                        <h3>Confidentiality</h3>
+                        <p>I understand that my personal information and treatment details will be kept confidential in accordance with privacy laws.</p>
+                        
+                        <h3>Consent</h3>
+                        <p>By signing this form, I acknowledge that I have read and understood the above information, and I consent to the treatment plan discussed with my esthetician.</p>
+                    </div>
+                    
+                    <form id="consentForm">
+                        <div class="consent-agreement">
+                            <input type="checkbox" id="agree" required>
+                            <label for="agree">I have read and agree to the terms of this consent form</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="clientSignature">Full Name (Digital Signature)</label>
+                            <input type="text" id="clientSignature" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="consentDate">Date</label>
+                            <input type="date" id="consentDate" required>
+                        </div>
+                        
+                        <button type="submit" class="btn">Submit Consent Form</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Assessment Results Page -->
+    <section id="assessment-results" class="page">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Your Personalized Recommendations</h1>
+                <p>Based on your skin assessment, here are our treatment and product suggestions</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="assessment-container">
+                    <div class="assessment-content">
+                        <h2>Your Skin Profile</h2>
+                        <div id="skinProfile">
+                            <!-- Dynamic content will be inserted here -->
+                        </div>
+                    </div>
+                    <div class="assessment-form">
+                        <h3>Recommended Treatments</h3>
+                        <div id="recommendedTreatments">
+                            <!-- Dynamic content will be inserted here -->
+                        </div>
+                        <a href="#" class="btn" onclick="showPage('booking')" style="margin-top: 20px; display: inline-block;">Book Recommended Treatment</a>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>Complementary Products</h2>
+                    <p>Based on your skin type, these products will enhance your treatment results</p>
+                </div>
+                
+                <div id="recommendedProducts" class="products-grid">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Glow & Grace</h3>
+                    <p>Your destination for personalized beauty treatments and skincare solutions. We're committed to helping you discover your natural glow.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#" onclick="showPage('services')">Services</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                        <li><a href="#" onclick="showPage('booking')">Book Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Skin Assessment</a></li>
+                        <li><a href="#">Facials</a></li>
+                        <li><a href="#">Anti-Aging Treatments</a></li>
+                        <li><a href="#">Acne Solutions</a></li>
+                        <li><a href="#">Brightening Treatments</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 472 Evergreen Terrace, Kilimanjaro</li>
+                        <li><i class="fas fa-phone"></i> +254 712 345 678</li>
+                        <li><i class="fas fa-envelope"></i> info@glowandgrace.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9am-7pm, Sat: 10am-5pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Glow & Grace Beauty Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Page navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Close mobile menu if open
+            document.querySelector('nav ul').classList.remove('show');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Skin type selection
+        document.querySelectorAll('.skin-type-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                document.querySelectorAll('.skin-type-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Update hidden input value
+                document.getElementById('skinFeeling').value = this.getAttribute('data-value');
+            });
+        });
+
+        // Skin assessment form submission
+        document.getElementById('skinAssessmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const skinType = document.getElementById('skinType').value;
+            const skinFeeling = document.getElementById('skinFeeling').value;
+            const skinGoals = document.getElementById('skinGoals').value;
+            
+            // Generate recommendations based on inputs
+            generateRecommendations(skinType, skinFeeling, skinGoals);
+            
+            // Show results page
+            showPage('assessment-results');
+        });
+
+        // Function to generate personalized recommendations
+        function generateRecommendations(skinType, skinFeeling, skinGoals) {
+            const skinProfile = document.getElementById('skinProfile');
+            const recommendedTreatments = document.getElementById('recommendedTreatments');
+            const recommendedProducts = document.getElementById('recommendedProducts');
+            
+            // Define recommendations based on skin type
+            const recommendations = {
+                dryness: {
+                    profile: "Your skin tends to be dry and may feel tight or flaky. You need intense hydration and nourishment.",
+                    treatment: "Our Hydrating Treatment with hyaluronic acid and nourishing oils will replenish moisture and restore your skin's natural barrier.",
+                    products: [
+                        {name: "Hydrating Lip Balm", icon: "fas fa-lipstick", desc: "Nourishing formula with shea butter and hyaluronic acid"},
+                        {name: "Rich Body Butter", icon: "fas fa-spa", desc: "Ultra-moisturizing blend with cocoa butter and vitamin E"},
+                        {name: "Nourishing Hair Mask", icon: "fas fa-star", desc: "Deep conditioning treatment for dry, brittle hair"}
+                    ]
+                },
+                oiliness: {
+                    profile: "Your skin produces excess oil and may be prone to shine and enlarged pores. Balance is key.",
+                    treatment: "Our Acne Solution Facial will deep clean pores, control oil production, and prevent breakouts without over-drying.",
+                    products: [
+                        {name: "Mattifying Lip Gloss", icon: "fas fa-lipstick", desc: "Non-greasy formula that provides shine without oiliness"},
+                        {name: "Clarifying Body Wash", icon: "fas fa-spa", desc: "Gentle cleanser with tea tree oil to balance skin"},
+                        {name: "Oil-Control Hair Serum", icon: "fas fa-star", desc: "Lightweight formula to reduce scalp oiliness"}
+                    ]
+                },
+                aging: {
+                    profile: "Your main concerns are fine lines, wrinkles, and loss of firmness. We'll focus on rejuvenation.",
+                    treatment: "Our Anti-Aging Treatment with peptides and growth factors will stimulate collagen and improve skin elasticity.",
+                    products: [
+                        {name: "Plumping Lip Treatment", icon: "fas fa-lipstick", desc: "Hydrates and minimizes fine lines around the mouth"},
+                        {name: "Firming Body Lotion", icon: "fas fa-spa", desc: "With retinol and collagen to improve skin texture"},
+                        {name: "Age-Defying Hand Cream", icon: "fas fa-star", desc: "Targets age spots and improves skin elasticity"}
+                    ]
+                },
+                acne: {
+                    profile: "Your skin is prone to breakouts and inflammation. We'll focus on clearing and calming.",
+                    treatment: "Our Acne Solution Facial includes deep cleansing, exfoliation, and healing ingredients to reduce inflammation.",
+                    products: [
+                        {name: "Acne-Fighting Lip Balm", icon: "fas fa-lipstick", desc: "With salicylic acid to prevent breakouts around the mouth"},
+                        {name: "Medicated Body Scrub", icon: "fas fa-spa", desc: "Exfoliates and treats body acne without irritation"},
+                        {name: "Clarifying Scalp Treatment", icon: "fas fa-star", desc: "Reduces oiliness and prevents scalp breakouts"}
+                    ]
+                },
+                sensitivity: {
+                    profile: "Your skin is easily irritated and reactive. Gentle, soothing treatments are recommended.",
+                    treatment: "Our Signature Glow Facial uses hypoallergenic products to calm sensitivity while improving skin health.",
+                    products: [
+                        {name: "Soothing Lip Balm", icon: "fas fa-lipstick", desc: "Fragrance-free formula for sensitive lips"},
+                        {name: "Calming Body Wash", icon: "fas fa-spa", desc: "Gentle cleanser with oatmeal and chamomile"},
+                        {name: "Hypoallergenic Nail Polish", icon: "fas fa-star", desc: "Free of common irritants for sensitive skin"}
+                    ]
+                }
+            };
+            
+            // Default recommendation if skin type not specified
+            const rec = recommendations[skinType] || recommendations.dryness;
+            
+            // Update skin profile
+            skinProfile.innerHTML = `
+                <p><strong>Primary Concern:</strong> ${document.getElementById('skinType').options[document.getElementById('skinType').selectedIndex].text}</p>
+                <p><strong>Skin Feel:</strong> ${skinFeeling.charAt(0).toUpperCase() + skinFeeling.slice(1)}</p>
+                <p><strong>Your Goals:</strong> ${skinGoals || 'Not specified'}</p>
+                <p>${rec.profile}</p>
+            `;
+            
+            // Update recommended treatments
+            recommendedTreatments.innerHTML = `
+                <p>${rec.treatment}</p>
+                <p>We recommend scheduling a consultation to further customize your treatment based on your specific needs and goals.</p>
+            `;
+            
+            // Update recommended products
+            recommendedProducts.innerHTML = rec.products.map(product => `
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <h3>${product.name}</h3>
+                    <p>${product.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // Form validation and submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Your appointment has been booked successfully! You will receive a confirmation email shortly.');
+            showPage('consent');
+        });
+
+        document.getElementById('consentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for completing the consent form. We look forward to seeing you for your appointment!');
+            this.reset();
+            showPage('home');
+        });
+
+        // Initialize date picker with future dates only
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const maxDate = new Date(today);
+        maxDate.setMonth(maxDate.getMonth() + 3);
+        
+        document.getElementById('bookingDate').min = tomorrow.toISOString().split('T')[0];
+        document.getElementById('bookingDate').max = maxDate.toISOString().split('T')[0];
+        document.getElementById('consentDate').valueAsDate = today;
+    </script>
+</body>
+</html>
